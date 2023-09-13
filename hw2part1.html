@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="description" content="CIS 114 Assignments - Homework 2">
+    <title>Part 1</title>
+    <style>
+        body {
+            background-color: #D8BFD8;
+            font-family: Arial, sans-serif;
+        }
+        header {
+            background-color: #333;
+            color: white;
+            text-align: center;
+            padding: 20px;
+        }
+        h1 {
+            font-size: 24px;
+        }
+        .back-link {
+            font-size: 13px;
+            display: inline-block;
+            background-color: #696969;
+            color: white;
+            text-decoration: none;
+            padding: 9.8px 19px 11px 13px;
+            position: absolute;
+            top: 107.10px;
+            border-radius: 0px 15px 0px 0px;
+            border-style: solid solid solid solid;
+            border-width: 1px;
+            border-color: black;
+        }
+        .back-link:hover {
+            background-color: #A9A9A9;
+        }
+        .navigation{
+            display: inline-block;
+            color: black;
+            text-decoration: none;
+            padding: 4.5px 40px;
+        }
+        .currentNavigation{
+            display: inline-block;
+            background-color: #D8BFD8;
+            color: black;
+            text-decoration: none;
+            padding: 9px 20px 10px 50px;
+            font-weight: bold;
+            font-size: 14px;
+            position: absolute;
+            top: 107.10px;
+            left: 120px;
+            border-radius: 0px 15px 0px 0px;
+            border-style: solid solid hidden solid;
+            border-width: 1px;
+        }
+        .currentNavigation2{
+            display: inline-block;
+            background-color: white;
+            color: black;
+            text-decoration: none;
+            padding: 9px 20px 9px 50px;
+            font-weight: bold;
+            font-size: 14px;
+            position: absolute;
+            top: 108px;
+            left: 194px;
+            border-radius: 15px 15px 0px 0px;
+        }
+        .currentNavigation2:hover {
+            background-color: #D8BFD8;
+        }
+        h3 {
+            background-color: white;
+            text-align: center;
+            margin: 0px;
+            padding: 1px +0px;
+            text-decoration: none;
+            font-size: 14px;
+            border-style: solid;
+            border-width: 1px;
+        }
+        
+        .bulletin{
+            margin: 0px 20px;
+        }
+
+        p{
+            margin: 10px 20px;
+        }
+        .p {
+            color: black;
+            text-decoration: none;
+
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Homework 2 - Basic Operations</h1>
+    </header>
+    
+    <h3>
+        <p class = "navigation"></p>
+    </h3>
+    
+    <br>
+    <p>Welcome to Homework 2 PART 1!</p>
+    <br>
+    <ul>
+        <p id="output"></p>
+    </ul>
+    <script>
+        function displayFormattedText()
+        {
+            var outputElement = document.getElementById("output");
+            var formattedText = " ";
+            formattedText += '<strong style = "font-family: Times New Roman; color: red;">xy</strong> ';
+            formattedText += '<span style="color: blue; font-family: Arial;">12</span> ';
+            formattedText += '<span style="color: green; font-family: Impact; font-style: italic;">89</span>';
+
+            outputElement.innerHTML = formattedText;
+        }
+        displayFormattedText();
+    </script>   
+    <br>
+    <ul>
+        <h4>As you can see on top, it is a script that displays the following:</h4>
+        <ul class = "bulletin">
+            <li>The letters XY in strong(bold)font, with font family Times New Roman, and the color red.</li>
+            <li>The numbers 12 that should be written in blue color, and font family arial.</li>
+            <li>The numbers 89 that should be written in green color exphasized(in italics) and font family Impact.</li>
+            <li>Each of these pairs should be seperated by one blank space.</li>
+        </ul>
+    </ul>
+    
+    <a class = "currentNavigation2" href = "hw2part2.html">Part 2</a>
+    <a class = "currentNavigation" href = "hw2part1.html">Part 1</a>
+    <a class = "back-link" href = "hw2.html">Back to main page</i></a>
+</body>
+</html>

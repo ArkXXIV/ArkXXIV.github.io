@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="description" content="CIS 114 Assignments - Homework 2">
+    <title>Part 2</title>
+    <style>
+        body {
+            background-color: #D8BFD8;
+            font-family: Arial, sans-serif;
+        }
+        header {
+            background-color: #333;
+            color: white;
+            text-align: center;
+            padding: 20px;
+        }
+        h1 {
+            font-size: 24px;
+        }
+        .back-link {
+            font-size: 13px;
+            display: inline-block;
+            background-color: #696969;
+            color: white;
+            text-decoration: none;
+            padding: 9.8px 19px 11px 13px;
+            position: absolute;
+            top: 107.10px;
+            border-radius: 0px 15px 0px 0px;
+            border-style: solid solid solid solid;
+            border-width: 1px;
+            border-color: black;
+        }
+        .back-link:hover {
+            background-color: #A9A9A9;
+        }
+        .navigation{
+            display: inline-block;
+            color: black;
+            text-decoration: none;
+            padding: 4.5px 40px;
+        }
+        .currentNavigation{
+            display: inline-block;
+            background-color: white;
+            color: black;
+            text-decoration: none;
+            padding: 10px 20px 9px 50px;
+            font-weight: bold;
+            font-size: 14px;
+            position: absolute;
+            top: 107px;
+            left: 120px;
+            border-radius: 0px 15px 0px 0px;
+            border-style: solid solid solid solid;
+            border-width: 1px;
+        }
+        .currentNavigation2{
+            display: inline-block;
+            background-color: #D8BFD8;
+            color: black;
+            text-decoration: none;
+            padding: 9px 20px 10px 50px;
+            font-weight: bold;
+            font-size: 14px;
+            position: absolute;
+            top: 107.10px;
+            left: 194px;
+            border-radius: 15px 15px 0px 0px;
+            border-style: solid solid hidden solid;
+            border-width: 1px;
+        }
+        .currentNavigation:hover {
+            background-color: #D8BFD8;
+        }
+        h3 {
+            background-color: white;
+            text-align: center;
+            margin: 0px;
+            padding: 1px +0px;
+            text-decoration: none;
+            font-size: 14px;
+            border-style: solid;
+            border-width: 1px;
+        }
+        
+        .bulletin{
+            margin: 0px 20px;
+        }
+
+        p{
+            margin: 10px 20px;
+        }
+        .p {
+            color: black;
+            text-decoration: none;
+
+        }
+
+    .calculator{
+        margin: 30px 30px;
+        padding: 30px 15px 30px 30px;
+        background: white;
+    }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Homework 2 - Basic Operations</h1>
+    </header>
+    
+    <h3>
+        <p class = "navigation"></p>
+    </h3>
+    
+    <br>
+    <p>Welcome to Homework 2 PART 2!</p>
+    <ul>
+        <p id="output"></p>
+    </ul> 
+    <br>
+    <ul>
+        <h4>This page contains a calculator you will find elow that will: </h4>
+        <ul class = "bulletin">
+            <li>Three input boxes for the user to type three integers(Numbers)</li>
+            <li>a button to process the data(numbers) typed by the user.</li>
+            <li>A button to clear the form.</li>
+            <li>A text are to display the result of the process(or it can be dic or pargraph element)</li>
+        </ul>
+        <h4> with JavaScript code that will:</h4>
+        <ul class = "bulletin">
+            <li>Receive the data from those three input boxes for the three integers after the useer click on the button to process the data</li>
+            <li>You will calculate the sum, the average and the product of the three integers.</li>
+            <li>You will also calculate the smallest and the largest of the three integers typed.</li>
+            <li>You will present the results of these calculations in the text area</li>
+            <li>Your script should not present any result if the user does not type NUMBERS in the input boxes and instead you should present an error message in the textarea.</li>
+        </ul>
+    </ul>
+    
+    <a class = "currentNavigation2" href = "hw2part2.html">Part 2</a>
+    <a class = "currentNavigation" href = "hw2part1.html">Part 1</a>
+    <a class = "back-link" href = "hw2.html">Back to main page</i></a>
+    <br>
+    <h1>Number Calculator</h1>
+    <form id="numberForm">
+        <p>
+            <label for="num1">Enter Integer 1:</label>
+        <input type="text" id="num1" name="num1" required><br><br>
+        
+        <label for="num2">Enter Integer 2:</label>
+        <input type="text" id="num2" name="num2" required><br><br>
+        
+        <label for="num3">Enter Integer 3:</label>
+        <input type="text" id="num3" name="num3" required><br><br>
+        
+        <input type="button" value="Calculate" onclick="calculateNumbers()">
+        <input type="button" value="Clear" onclick="clearForm()">   
+        </p>
+    </form>
+    
+    <textarea id="results" rows="6" cols="40" readonly></textarea>
+
+    <script>
+        function calculateNumbers() {
+            var num1 = parseInt(document.getElementById("num1").value);
+            var num2 = parseInt(document.getElementById("num2").value);
+            var num3 = parseInt(document.getElementById("num3").value);
+
+            if (isNaN(num1) || isNaN(num2) || isNaN(num3)) {
+                document.getElementById("results").value = "Please enter valid numbers in all fields.";
+                return;
+            }
+
+            var sum = num1 + num2 + num3;
+            var average = sum / 3;
+            var product = num1 * num2 * num3;
+            var smallest = Math.min(num1, num2, num3);
+            var largest = Math.max(num1, num2, num3);
+
+            var resultText = "Sum: " + sum + "\n";
+            resultText += "Average: " + average.toFixed(2) + "\n";
+            resultText += "Product: " + product + "\n";
+            resultText += "Smallest: " + smallest + "\n";
+            resultText += "Largest: " + largest;
+            document.getElementById("results").value = resultText;
+        }
+
+        function clearForm() {
+            document.getElementById("num1").value = "";
+            document.getElementById("num2").value = "";
+            document.getElementById("num3").value = "";
+            document.getElementById("results").value = "";
+        }
+    </script>
+</body>
+</html>
