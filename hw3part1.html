@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="description" content="CIS 114 Assignments - Homework 2">
+    <title>Part 1</title>
+    <style>
+        body {
+            background-color: #D8BFD8;
+            font-family: Arial, sans-serif;
+        }
+        header {
+            background-color: #333;
+            color: white;
+            text-align: center;
+            padding: 20px;
+        }
+        h1 {
+            font-size: 24px;
+        }
+        .back-link {
+            font-size: 13px;
+            display: inline-block;
+            background-color: #696969;
+            color: white;
+            text-decoration: none;
+            padding: 9.8px 19px 11px 13px;
+            position: absolute;
+            top: 107.10px;
+            border-radius: 0px 15px 0px 0px;
+            border-style: solid solid solid solid;
+            border-width: 1px;
+            border-color: black;
+        }
+        .back-link:hover {
+            background-color: #A9A9A9;
+        }
+        .navigation{
+            display: inline-block;
+            color: black;
+            text-decoration: none;
+            padding: 4.5px 40px;
+        }
+        .currentNavigation{
+            display: inline-block;
+            background-color: #D8BFD8;
+            color: black;
+            text-decoration: none;
+            padding: 9px 20px 10px 50px;
+            font-weight: bold;
+            font-size: 14px;
+            position: absolute;
+            top: 107.10px;
+            left: 120px;
+            border-radius: 0px 15px 0px 0px;
+            border-style: solid solid hidden solid;
+            border-width: 1px;
+        }
+        .currentNavigation2{
+            display: inline-block;
+            background-color: white;
+            color: black;
+            text-decoration: none;
+            padding: 9px 20px 9px 50px;
+            font-weight: bold;
+            font-size: 14px;
+            position: absolute;
+            top: 108px;
+            left: 194px;
+            border-radius: 15px 15px 0px 0px;
+        }
+        .currentNavigation2:hover {
+            background-color: #D8BFD8;
+        }
+        h3 {
+            background-color: white;
+            text-align: center;
+            margin: 0px;
+            padding: 1px +0px;
+            text-decoration: none;
+            font-size: 14px;
+            border-style: solid;
+            border-width: 1px;
+        }
+        
+        .bulletin{
+            margin: 0px 20px;
+        }
+
+        p{
+            margin: 10px 20px;
+        }
+        .p {
+            color: black;
+            text-decoration: none;
+
+        }
+        .rubrics {
+            border-collapse: collapse;
+            width: 20%;
+        }
+        .rubrics2 {
+            border: 1px solid black;
+            padding: 1px;
+            text-align: center;
+        }
+        .tab{
+            padding: 20px;
+            right: 150px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Homework 3 - Functions</h1>
+    </header>
+    <h3>
+        <p class = "navigation"></p>
+    </h3>
+    <br>
+    <p>Welcome to Homework 3 PART 1!</p>
+    <ul>
+        <p id="output"></p>
+    </ul>  
+
+    <!-- Form for Student Grades -->
+    <form id="studentGradesForm">
+        <table class = "tab">
+            <tr>
+                <td><h1>Student Grades</h1></td>
+            </tr>
+            <tr>
+                <td><label for="hwAvg">Homework Average:</label></td>
+                <td><input type="number" id="hwAvg" required></td>
+            </tr>
+            <tr>
+                <td><label for="midExam">Mid-Term Exam Score:</label></td>
+                <td><input type="number" id="midExam" required></td>
+            </tr>
+            <tr>
+                <td><label for="finalExam">Final Exam Score:</label></td>
+                <td><input type="number" id="finalExam" required></td>
+            </tr>
+            <tr>
+                <td><label for="participation">Participation:</label></td>
+                <td><input type="number" id="participation" required></td>
+            </tr>
+            <tr>
+                <td></td>
+                <td>
+                    <input type="button" value="Calculate" onclick="calculateFinalGrade()">
+                    <input type="button" value="Clear" onclick="clearForm()">
+                </td>
+            </tr>
+        </table> 
+    </form>
+
+    <!-- Result Display Area -->
+    <div id="result"></div>
+
+    <script>
+        // JavaScript for Student Grades
+        function calculateFinalGrade() {
+            // Get input values
+            const hwAvg = parseFloat(document.getElementById("hwAvg").value);
+            const midExam = parseFloat(document.getElementById("midExam").value);
+            const finalExam = parseFloat(document.getElementById("finalExam").value);
+            const participation = parseFloat(document.getElementById("participation").value);
+
+            // Check if input is valid
+            if (isNaN(hwAvg) || isNaN(midExam) || isNaN(finalExam) || isNaN(participation) ||
+                hwAvg < 0 || hwAvg > 100 || midExam < 0 || midExam > 100 ||
+                finalExam < 0 || finalExam > 100 || participation < 0 || participation > 100) {
+                showError("Invalid input. Please enter valid grades between 0 and 100.");
+                return;
+            }
+
+            // Calculate final average
+            const finalAverage = Math.round((0.5 * hwAvg) + (0.2 * midExam) + (0.2 * finalExam) + (0.1 * participation));
+
+            // Determine letter grade
+            let letterGrade;
+            if (finalAverage >= 90) {
+                letterGrade = 'A';
+            } else if (finalAverage >= 80) {
+                letterGrade = 'B';
+            } else if (finalAverage >= 70) {
+                letterGrade = 'C';
+            } else if (finalAverage >= 60) {
+                letterGrade = 'D';
+            } else {
+                letterGrade = 'F';
+            }
+
+            // Display result
+            showResult(`Final Average: ${finalAverage}<br>Final Grade: ${letterGrade}`);
+        }
+
+        function clearForm() {
+            // Clear input fields and result area
+            document.getElementById("studentGradesForm").reset();
+            document.getElementById("result").innerHTML = '';
+        }
+
+        function showError(message) {
+            document.getElementById("result").innerHTML = `<p style="color: red">${message}</p>`;
+        }
+
+        function showResult(result) {
+            document.getElementById("result").innerHTML = result;
+        }
+    </script>
+    <br>
+    <ul>
+        <h4>As you can see on top, it is a script that displays the following:</h4>
+        <ul class = "bulletin">
+            <li>The heading Student Grades,</li>
+            <li>A form with input boxes for Homework Average, Mid-Term Exam Score, Final Exam Score and Participation</li>
+            <li>You should have a button for submitting the data and a button to clear the form1</li>
+            <li>You should have a textarea (or div or paragraph)</li>
+        </ul>
+        <p>It has a Script that:</p>
+        <ul class = "bulletin">
+            <li>Checks for valid input, i.e., that the input is between 0-100 and that, of course, the input are all numbers.</li>
+            <li>If all input is valid then calculate and display the student's final average according to the formula: <br><b>final average = (.5 * hwAvg) + (.2 * midExam) + (.2 * finalExam) + (.1* participation)</b></li>
+            <li>In the output area, you will present the student's final average (rounded to an integer)<br>and final letter grade using the following creteria:</li>
+            <br>
+            <table class = "rubrics">
+                <tr class = "rubrics2">
+                    <th class = "rubrics2"><b>Percentage</b></th>
+                    <th class = "rubrics2"><b>Letter Grade</b></th>
+                </tr>
+                <tr class = "rubrics2">
+                    <th class = "rubrics2">90-100</th>
+                    <th class = "rubrics2">A</th>
+                </tr>
+                <tr class = "rubrics2">
+                    <th class = "rubrics2">80-89</th>
+                    <th class = "rubrics2">B</th>
+                </tr>
+                <tr class = "rubrics2">
+                    <th class = "rubrics2">70-79</th>
+                    <th class = "rubrics2">C</th>
+                </tr>
+                <tr class = "rubrics2">
+                    <th class = "rubrics2">60-69</th>
+                    <th class = "rubrics2">D</th>
+                </tr>
+                <tr class = "rubrics2">
+                    <th class = "rubrics2">0-59</th>
+                    <th class = "rubrics2">F</th>
+                </tr>
+            </table>
+        </ul>
+    </ul>
+    <a class = "currentNavigation2" href = "hw3part2.html">Part 2</a>
+    <a class = "currentNavigation" href = "hw3part1.html">Part 1</a>
+    <a class = "back-link" href = "hw3.html">Back to main page</i></a>
+
+</body>
+</html>
