@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="description" content="CIS 114 Assignments - Homework 2">
+    <title>Part 2</title>
+    <style>
+        body
+        {
+            background-color: #D8BFD8;
+            font-family: Arial, sans-serif;
+        }
+        header
+        {
+            background-color: #333;
+            color: white;
+            text-align: center;
+            padding: 20px;
+        }
+        h1
+        {
+            font-size: 24px;
+        }
+        .back-link
+        {
+            font-size: 13px;
+            display: inline-block;
+            background-color: #696969;
+            color: white;
+            text-decoration: none;
+            padding: 9.8px 19px 11px 13px;
+            position: absolute;
+            top: 107.10px;
+            border-radius: 0px 15px 0px 0px;
+            border-style: solid solid solid solid;
+            border-width: 1px;
+            border-color: black;
+        }
+        .back-link:hover
+        {
+            background-color: #A9A9A9;
+        }
+        .navigation
+        {
+            display: inline-block;
+            color: black;
+            text-decoration: none;
+            padding: 4.5px 40px;
+        }
+        .currentNavigation
+        {
+            display: inline-block;
+            background-color: white;
+            color: black;
+            text-decoration: none;
+            padding: 10px 20px 9px 50px;
+            font-weight: bold;
+            font-size: 14px;
+            position: absolute;
+            top: 107px;
+            left: 120px;
+            border-radius: 0px 15px 0px 0px;
+            border-style: solid solid solid solid;
+            border-width: 1px;
+        }
+        .currentNavigation2
+        {
+            display: inline-block;
+            background-color: #D8BFD8;
+            color: black;
+            text-decoration: none;
+            padding: 9px 20px 10px 50px;
+            font-weight: bold;
+            font-size: 14px;
+            position: absolute;
+            top: 107.10px;
+            left: 194px;
+            border-radius: 15px 15px 0px 0px;
+            border-style: solid solid hidden solid;
+            border-width: 1px;
+        }
+        .currentNavigation:hover
+        {
+            background-color: #D8BFD8;
+        }
+        h3
+        {
+            background-color: white;
+            text-align: center;
+            margin: 0px;
+            padding: 1px +0px;
+            text-decoration: none;
+            font-size: 14px;
+            border-style: solid;
+            border-width: 1px;
+        }
+        .bulletin
+        {
+            margin: 0px 20px;
+        }
+
+        p
+        {
+            margin: 10px 20px;
+        }
+        .p 
+        {
+            color: black;
+            text-decoration: none;
+
+        }
+        /*Where I added somem new styles*/
+        h1.header
+        {
+            text-align: center;
+        }
+        h2.title
+        {
+            margin: 0px 50px;
+        }
+        li.a
+        {
+            list-style-type: square;
+            margin-top: 2px;
+            margin-bottom: 2px;
+        }
+        .task
+        {
+            margin: 1px 30% 10px 0px;
+            list-style-type: none;
+        }
+        table
+        {
+            border-collapse: collapse;
+            width: 200px;
+            margin: 20px 100px;
+        }
+        table, th, td
+        {
+            border: 1px solid black;
+            text-align: center;
+        }
+        th, td
+        {
+            padding: 8px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Homework 4 - Looping Statements</h1>
+    </header>
+    <h3>
+        <p class = "navigation"></p>
+    </h3>
+    <br>
+    <p>Welcome to Homework 4 PART 2!</p>
+    <ul>
+        <p id="output"></p>
+    </ul> 
+    <h1 class = "header">Learn about Compound Interest</h1>
+    <script>
+        const principal = 1000;
+        const interestRates = [0.05, 0.06, 0.07]; // 5%, 6%, and 7%
+        const years = 5;
+
+        interestRates.forEach(interestRate => 
+        {
+            const interestRatePercentage = (interestRate * 100).toFixed(2);
+            let amount = principal;
+
+            document.write
+            (`
+                <h2 class = "title">Interest Rate: ${interestRatePercentage}%</h2>
+                <table>
+                    <tr>
+                        <th>Year</th>
+                        <th>Amount</th>
+                        <th>Interest Rate</th>
+                    </tr>
+            `);
+            for (let year = 1; year <= years; year++) // I used "let" instead of "var" to limit the variable to this scope
+            {
+                amount += amount * interestRate;
+                document.write
+                (`
+                    <tr>
+                        <td>${year}</td>
+                        <td>$${amount.toFixed(2)}</td>
+                        <td>${interestRatePercentage}%</td>
+                    </tr>
+                `);
+            }
+            document.write(`</table>`); //This where the table would end
+        });
+    </script>
+    <br>
+    <ul>
+        <h4>For Part 2: </h4>
+        <ul class = "bulletin">
+            <li class = "task">
+                You will create a web page to show to interested clients
+                how compound interest works.
+                <br><br>
+                As soon as you open that web page on the browser to the
+                clilent, it will have a heading such as "<b>Learn about
+                compound interest</b>"
+                <br><br>
+                Below the heading you will code a script to show 3 tables
+                with the calculation of compound interest on a principal
+                of <b>$1000</b>.
+                <ul>
+                    <li class = "a">The first table will be for the interest rate of <b>5%</b></li>
+                    <li class = "a">The second table will be for the interest rate of <b>6%</b></li>
+                    <li class = "a">The third table will be for the interest rate of <b>7%</b></li>
+                </ul>
+                <br>
+                Each of the tables will show the rows <b>from year 1
+                through 5</b>.
+                <br><br>
+                The formula to claculate the compoud interest is: <b>A =
+                P(1 + r)<sup>n</sup></b> where:
+                <ul>
+                    <li class = "a"><b>P</b> is the principal(the initial amount you borrow or deposit)</li>
+                    <li class = "a"><b>r</b> is the annual rate of interest(percentage)</li>
+                    <li class = "a"><b>n</b> is the number of years that amount is deposted</li>
+                    <li class = "a"><b>A</b> is the amount of money accumulated after ny ears, including interest</li>
+                </ul>
+                <br>
+                The table will look like what is shown here below (the table 
+                below is showing only the first 4 years and for only the 5%
+                interest rate.)
+                <ul>
+                    <li class = "a">The first column will have the <b>number for the year</b></li>
+                    <li class = "a">The second column will have the <b>Amount calculated</b>, based on that formula for that year</li>
+                    <li class = "a">The third column will have the <b>Interest rate</b> that is being used</li>
+                </ul>
+                <!--Where the table should be-->
+                <br>
+                There is <b>NO INPUT</b> for this problem! the 3 tables(one for
+                5%, another for 6% and another for 7%) should be shown as soon
+                as the page is opened (loaded in the browser).
+                <br><br>
+                <b>IMPORTANT TIP</b>: The more efficient way to resolve this
+                problem is to make one loop inside the other (nested loop). It
+                is not ok if you set 3 tables first and then loop to write
+                only the results on the tables! Think about future maintenance
+                - for example, if the company requests to show one more table
+                for another interest rate, or if it is requested to present 10
+                years, instead of 5 for each ineterest rate. The less places
+                you have to modify, the etter your code is considered. So, use
+                nested loop.
+                <br><br>
+                <b>MORE FOR THIS TIP</b>: the outside loop should be for the
+                interest rate that will start a new table tag and top part of
+                the table (table headings), then the internal loop should be 
+                for each year to build the rows of that table.
+            </li>
+        </ul>
+    </ul>
+    <a class = "currentNavigation2" href = "hw4part2.html">Part 2</a>
+    <a class = "currentNavigation" href = "hw4part1.html">Part 1</a>
+    <a class = "back-link" href = "hw4.html">Back to main page</i></a>
+    <br>
+</body>
+</html>
