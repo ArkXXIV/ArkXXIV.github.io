@@ -2,8 +2,9 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="CIS 114 Assignments - Homework 5">
-    <title>Homework 5</title>
+    <title>Part 1</title>
     <style>
         body {
             background-color: #D8BFD8;
@@ -18,13 +19,13 @@
         h1 {
             font-size: 24px;
         }
-        .back-link {
+        .back-link{
             font-size: 13px;
             display: inline-block;
             background-color: #696969;
             color: white;
             text-decoration: none;
-            padding: 10px 38.5px 10px 38.5px;
+            padding: 9.8px 19px 11px 13px;
             position: absolute;
             top: 107.10px;
             border-radius: 0px 15px 0px 0px;
@@ -32,7 +33,7 @@
             border-width: 1px;
             border-color: black;
         }
-        .back-link:hover {
+        .back-link:hover{
             background-color: #A9A9A9;
         }
         .navigation {
@@ -63,17 +64,17 @@
         }
         .part1 {
             display: inline-block;
-            background-color: white;
+            background-color: #D8BFD8;
             color: black;
             text-decoration: none;
-            padding: 9px 20px 9px 50px;
+            padding: 9px 20px 10px 50px;
             font-weight: bold;
             font-size: 14px;
             position: absolute;
-            top: 108px;
-            left: 121px;
+            top: 107.10px;
+            left: 120px;
             border-radius: 0px 15px 0px 0px;
-            border-style: hidden;
+            border-style: solid solid hidden solid;
             border-width: 1px;
         }
         .part2 {
@@ -105,6 +106,15 @@
         .part1:hover, .part2:hover, .part3:hover {
             background-color: #D8BFD8;
         }
+        .form {
+            width: 300px;
+            margin: 20px 50px;
+            background-color: #696969;
+            padding: 20px 20px;
+            color: white;
+            border-style: dotted;
+            border-color: black;
+        }
     </style>
 </head>
 <body>
@@ -116,10 +126,48 @@
     </h3>
     <a class = "back-link" href = "https://ArkXXIV.github.io/hw1.html">Back Page</i></a>
     <br>
-    <p>Welcome to Homework 5!</p>
+    <p>Welcome to Homework 5 PART 1!</p>
+    <br>
+    <div class = "form">
+        <form id="userForm">
+            <label for="fullName">Full Name:</label>
+            <input type="text" id="fullName" required><br><br>
+    
+            <label>Age Group:</label><br>
+            <input type="radio" id="ageGroup1" name="ageGroup" value="lessThan21">
+            <label for="ageGroup1">Less than 21</label><br>
+            <input type="radio" id="ageGroup2" name="ageGroup" value="21to50">
+            <label for="ageGroup2">21 to 50</label><br>
+            <input type="radio" id="ageGroup3" name="ageGroup" value="olderThan50">
+            <label for="ageGroup3">Older than 50</label><br><br>
+    
+            <label>Browsers Used:</label><br>
+            <input type="checkbox" id="firefox" name="browsers" value="Firefox">
+            <label for="firefox">Firefox</label><br>
+            <input type="checkbox" id="edge" name="browsers" value="Edge">
+            <label for="edge">Edge</label><br>
+            <input type="checkbox" id="chrome" name="browsers" value="Chrome">
+            <label for="chrome">Chrome</label><br>
+            <input type="checkbox" id="safari" name="browsers" value="Safari">
+            <label for="safari">Safari</label><br><br>
+    
+            <label for="moviePreference">Movie Preference:</label>
+            <select id="moviePreference">
+                <option value="Action">Action</option>
+                <option value="Comedy">Comedy</option>
+                <option value="Drama">Drama</option>
+                <option value="Documentary">Documentary</option>
+                <option value="ScienceFiction">Science Fiction</option>
+            </select><br><br>
+    
+            <button type="button" onclick="validateForm()">Submit</button>
+            <button type="button" onclick="clearForm()">Clear</button>
+        </form>
+        <div id="outputArea"></div>
+    </div>
     <br>
     <ul>
-        <h4>This assignment will have 3 parts: </h4>
+        <h4>For Part 1: </h4>
         <ul>
             <li><a class = "p" href = "hw5part1.html">Part 1</a></li>
             <p class = "task">
@@ -140,43 +188,36 @@
                 should be displayed.
             </p>
             <br>
-            <li><a class = "p" href = "hw5part2.html">Part 2</a></li>
-            <p class = "task">
-                Create a web page for part 2 with a heading and a hyperlink
-                to the main Homework 5 page. Include two pulldown menus: The 
-                first pulldown menu should use an onchange event handler,
-                and the second pulldown menu should use a button with an
-                onclick event handler to navigate to a page after an option
-                is selected. Each pulldown menu should have at least three
-                URL destinations. Write a script that, based on the selection
-                from each pulldown menu, will open the chosen website in
-                another tab or window when the user interacts with the
-                pulldown menus.
-            </p>
-            <br>
-            <li><a class = "p" href = "hw5part3.html">Part 3</a></li>
-            <p class = "task">
-                Create a web page for part 3 with a heading and a hyperlink to
-                return to the main page of Homework 5. Include a form with an
-                input text box where the user can enter the full name or two
-                letter abbreviation of a state. Add buttons to submit the data
-                and clear the form and a text area or other element of
-                displaying the output. Write a script to check if the user's 
-                input, whether in full name of abbreciation and regardless of
-                case, matches the states in a database. If the state is not
-                found, display an error message. If the state exists, display
-                the corresponding state information from a two-dimensional 
-                array in a readanle format. Validate user input for correct
-                state abbreviations or names. If the input is invalid show an
-                error message; if it's corrected and valid, display the state
-                information.
-            </p>
         </ul>
     </ul>
+
+    <script>
+        function validateForm() {
+            const fullName = document.getElementById("fullName").value;
+            const ageGroup = document.querySelector('input[name="ageGroup"]:checked');
+            const browsers = document.querySelectorAll('input[name="browsers"]:checked');
+            const moviePreference = document.getElementById("moviePreference").value;
+
+            const outputArea = document.getElementById("outputArea");
+
+            outputArea.innerHTML = '';
+
+            if (!fullName || !ageGroup || browsers.length === 0 || !moviePreference) {
+                outputArea.textContent = "Error: Please fill out all the required fields.";
+            } else {
+                outputArea.textContent = "Thanks, your data was submitted!";
+            }
+        }
+
+        function clearForm() {
+            document.getElementById("userForm").reset();
+            document.getElementById("outputArea").textContent = '';
+        }
+    </script>
     <a class = "part3" href = "hw5part3.html">Part 3</a>
     <a class = "part2" href = "hw5part2.html">Part 2</a>
     <a class = "part1" href = "hw5part1.html">Part 1</a>
-    <a class = "back-link" href = "https://ArkXXIV.github.io/hw1.html">Back Page</i></a>
+    <a class = "back-link" href = "hw5.html">Back to main page</i></a>
     
 </body>
 </html>

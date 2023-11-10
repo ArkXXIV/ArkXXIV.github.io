@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="CIS 114 Assignments - Homework 5">
+    <title>Part 3</title>
+    <style>
+        body {
+            background-color: #D8BFD8;
+            font-family: Arial, sans-serif;
+        }
+        header {
+            background-color: #333;
+            color: white;
+            text-align: center;
+            padding: 20px;
+        }
+        h1 {
+            font-size: 24px;
+        }
+        .back-link{
+            font-size: 13px;
+            display: inline-block;
+            background-color: #696969;
+            color: white;
+            text-decoration: none;
+            padding: 9.8px 19px 11px 13px;
+            position: absolute;
+            top: 107.10px;
+            border-radius: 0px 15px 0px 0px;
+            border-style: solid solid solid solid;
+            border-width: 1px;
+            border-color: black;
+        }
+        .back-link:hover{
+            background-color: #A9A9A9;
+        }
+        .navigation {
+            display: inline-block;
+            color: black;
+            text-decoration: none;
+            padding: 4.5px 40px;
+        }
+        h3 {
+            background-color: white;
+            text-align: center;
+            margin: 0px;
+            padding: 1px +0px;
+            text-decoration: none;
+            font-size: 14px;
+            border-style: solid;
+            border-width: 1px;
+        }
+        p {
+            margin: 10px 20px;
+        }
+        .p {
+            color: black;
+            text-decoration: none;
+        }
+        .task {
+            margin: 0px 30% 0px 0px;
+        }
+        .part1 {
+            display: inline-block;
+            background-color: white;
+            color: black;
+            text-decoration: none;
+            padding: 9px 20px 10px 50px;
+            font-weight: bold;
+            font-size: 14px;
+            position: absolute;
+            top: 107px;
+            left: 120px;
+            border-radius: 0px 15px 0px 0px;
+            border-style: solid;
+            border-width: 1px;
+        }
+        .part2 {
+            display: inline-block;
+            background-color: white;
+            color: black;
+            text-decoration: none;
+            padding: 9px 20px 10px 50px;
+            font-weight: bold;
+            font-size: 14px;
+            position: absolute;
+            top: 107px;
+            left: 194px;
+            border-radius: 15px 15px 0px 0px;
+            border-style: solid ;
+            border-width: 1px;
+        }
+        .part3 {
+            display: inline-block;
+            background-color: #D8BFD8;
+            color: black;
+            text-decoration: none;
+            padding: 9px 20px 10px 50px;
+            font-weight: bold;
+            font-size: 14px;
+            position: absolute;
+            top: 107.10px;
+            left: 267px;
+            border-radius: 15px 15px 0px 0px;
+            border-style: solid solid hidden solid;
+            border-width: 1px;
+        }
+        .part1:hover, .part2:hover, .part3:hover {
+            background-color: #D8BFD8;
+        }
+        table {
+            width: 600px;
+            background-color: #696969;
+            color: white;
+            text-align: center;
+            border: dotted;
+            border-color: black;
+            padding: 10px;
+            margin: 20px 50px;
+        }
+        input {
+            width: 300px;
+            box-sizing: border-box;
+        }
+        button {
+            width: 49%;
+        }
+        .empty-cell {
+            width: 100%;
+            height: 150px;
+            background-color: white;
+            color: #696969;
+            text-align: left;
+            padding: 10px;
+            border-radius: 15px;
+        } 
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Homework 5 - Arrays</h1>
+    </header>
+    <h3>
+        <p class = "navigation"></p>
+    </h3>
+    <a class = "back-link" href = "https://ArkXXIV.github.io/hw1.html">Back Page</i></a>
+    <br>
+    <p>Welcome to Homework 5 PART 3!</p>
+
+    <table>
+        <tr>
+            <th>
+                <form id="stateForm">
+                    <label for="stateInput">Enter State Name or Abbreviation:</label>
+            </th>
+            <th>
+                <input type="text" id="stateInput" name="stateInput" required placeholder="Enter here">
+            </th>
+        </tr>
+        <tr>
+            <th colspan = "2" class = "empty-cell">
+                <div id="outputArea"></div>
+            </th>
+        </tr>
+        <tr>
+            <th>
+            </th>
+            <th>
+                    <button type="button" onclick="getStateInfo()">Get State Info</button>
+                    <button type="button" onclick="clearForm()">Clear Form</button>
+                </form>
+            </th>
+        </tr>
+    </table>
+
+    <ul>
+        <h4>For Part 3: </h4>
+        <ul>
+            <li><a class = "p" href = "hw5part1.html">Part 1</a></li>
+            <p class = "task">
+                Create a web page for part 3 with a heading and a hyperlink to
+                return to the main page of Homework 5. Include a form with an
+                input text box where the user can enter the full name or two
+                letter abbreviation of a state. Add buttons to submit the data
+                and clear the form and a text area or other element of
+                displaying the output. Write a script to check if the user's 
+                input, whether in full name of abbreciation and regardless of
+                case, matches the states in a database. If the state is not
+                found, display an error message. If the state exists, display
+                the corresponding state information from a two-dimensional 
+                array in a readanle format. Validate user input for correct
+                state abbreviations or names. If the input is invalid show an
+                error message; if it's corrected and valid, display the state
+                information.
+            </p>
+            <br>
+        </ul>
+    </ul>
+
+    <script>
+        function getStateInfo() {
+            // Get user input and convert to uppercase for case-insensitive comparison
+            const userInput = document.getElementById("stateInput").value.toUpperCase();
+
+            // Your state data array (replace this with your actual data)
+            const stateData = [
+                ["AL", "Alabama", "Montgomery", "4,903,185"],
+                ["AK", "Alaska", "Juneau", "731,545"],
+                ["AZ", "Arizona", "Phoenix", "7,278,717"],
+                ["AR", "Arkansas", "Little Rock", "3,017,825"],
+                ["CA", "California", "Sacramento", "39, 512,223"],
+                ["CO", "Colorado", "Denver", "5,758,736"]
+                // Add other states...
+        ];
+
+        let found = false;
+        let resultMessage = "";
+
+        // Loop through the state data
+        for (let i = 0; i < stateData.length; i++) {
+            const state = stateData[i];
+            const stateAbbr = state[0].toUpperCase();
+            const stateName = state[1].toUpperCase(); // Convert state name to lowercase for case-insensitive comparison
+
+            // Check if the user input matches either state abbreviation or name
+            if (userInput === stateAbbr || userInput === stateName) {
+                found = true;
+                resultMessage = `
+                    Thanks for your inquiry, here is the information you requested:<br>
+                    State abbr = ${state[0]}<br>
+                    State Name = ${state[1]}<br>
+                    Capital = ${state[2]}<br>
+                    Population = ${state[3]}
+                `;
+                break; // No need to continue searching once found
+            }
+        }
+
+        // Display result message
+        const outputArea = document.getElementById("outputArea");
+        outputArea.innerHTML = found ? resultMessage : "Sorry, we do not have information about this state!";
+        }
+
+        function clearForm() {
+            document.getElementById("stateForm").reset();
+            document.getElementById("outputArea").innerHTML = ""; // Clear output area
+        }
+    </script>
+
+    <a class = "part3" href = "hw5part3.html">Part 3</a>
+    <a class = "part2" href = "hw5part2.html">Part 2</a>
+    <a class = "part1" href = "hw5part1.html">Part 1</a>
+    <a class = "back-link" href = "hw5.html">Back to main page</i></a>
+    
+</body>
+</html>
