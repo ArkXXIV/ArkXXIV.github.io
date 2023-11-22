@@ -2,8 +2,9 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="description" content="CIS 114 Assignments - Homework 6">
-    <title>Homework 6</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="CIS 114 Assignments - Homework 5">
+    <title>Part 2</title>
     <style>
         body {
             background-color: #D8BFD8;
@@ -18,13 +19,13 @@
         h1 {
             font-size: 24px;
         }
-        .back-link {
+        .back-link{
             font-size: 13px;
             display: inline-block;
             background-color: #696969;
             color: white;
             text-decoration: none;
-            padding: 10px 38.5px 10px 38.5px;
+            padding: 9.8px 19px 11px 13px;
             position: absolute;
             top: 107.10px;
             border-radius: 0px 15px 0px 0px;
@@ -32,7 +33,7 @@
             border-width: 1px;
             border-color: black;
         }
-        .back-link:hover {
+        .back-link:hover{
             background-color: #A9A9A9;
         }
         .navigation {
@@ -66,28 +67,30 @@
             background-color: white;
             color: black;
             text-decoration: none;
-            padding: 9px 20px 9px 50px;
+            padding: 9px 20px 10px 50px;
             font-weight: bold;
             font-size: 14px;
             position: absolute;
-            top: 108px;
-            left: 121px;
+            top: 107px;
+            left: 120px;
             border-radius: 0px 15px 0px 0px;
-            border-style: hidden;
+            border-style: solid;
             border-width: 1px;
         }
         .part2 {
             display: inline-block;
-            background-color: white;
+            background-color: #D8BFD8;
             color: black;
             text-decoration: none;
-            padding: 9px 20px 9px 50px;
+            padding: 9px 20px 10px 50px;
             font-weight: bold;
             font-size: 14px;
             position: absolute;
-            top: 108px;
+            top: 107.10px;
             left: 194px;
             border-radius: 15px 15px 0px 0px;
+            border-style: solid solid hidden solid;
+            border-width: 1px;
         }
         .part3 {
             display: inline-block;
@@ -105,6 +108,22 @@
         .part1:hover, .part2:hover, .part3:hover {
             background-color: #D8BFD8;
         }
+        .form {
+            width: 350px;
+            height: 280px;
+            margin: 20px 50px;
+            background-color: #696969;
+            padding: 10px 20px;
+            color: white;
+            border-style: dotted;
+            border-color: black;
+        }
+        #content {
+            max-width: 340px; /* Set your preferred max-width */
+            max-height: 130px; /* Set your preferred max-height */
+            width: 100%;
+            resize: both; /* Allow resizing */
+        }
     </style>
 </head>
 <body>
@@ -114,31 +133,27 @@
     <h3>
         <p class = "navigation"></p>
     </h3>
-    <a class = "back-link" href = "https://ArkXXIV.github.io/hw1.html">Back Page</i></a>
+    <a class = "back-link" href = "https://ArkXXIV.github.io/hw1.html">Back Page</a>
     <br>
-    <p>Welcome to Homework 6!</p>
+    <p>Welcome to Homework 6 PART 2!</p>
     <br>
+
+    <div class = "form">
+        <form>
+            <h1>Character Search</h1>
+            <textarea id="content" placeholder="Type your content here..." rows="4" cols="40"></textarea><br>
+            <label for="searchChar">Search Character:</label>
+            <input type="text" id="searchChar" maxlength="1" style="text-transform: lowercase;"><br>
+            <button type="button" onclick="searchCharacter()">Submit</button>
+            <button type="button" onclick="clearForm()">Clear</button>
+            <br><br>
+            <div id="output"></div>
+        </form>
+    </div>
+
     <ul>
-        <h4>This assignment will have 3 parts: </h4>
+        <h4>For Part 2: </h4>
         <ul>
-            <li><a class = "p" href = "hw6part1.html">Part 1</a></li>
-            <p class = "task">
-                You need to create a web page with a form containing an input 
-                box for the user to enter a number with at least 4 decimal
-                positions. The form should also include buttons to submit the 
-                data and clear the form, along with a textarea or another 
-                element to display the output. Additionally, include a hyperlink
-                to go back to the main page of homework 6. Create a script that
-                validates the input, displaying an error message if the number 
-                is invalid. If the input is valid, use various Math functions 
-                to perform calculations on the number (rounding, calculating 
-                square root, etc.) and present the original number along with 
-                the results in the output area. Remember to use "parseFloat()"
-                when reading input and "toFixed()" when presenting the final 
-                result.
-            </p>
-            <br>
-            <li><a class = "p" href = "hw6part2.html">Part 2</a></li>
             <p class = "task">
                 Create a web page with a heading, a form including a textarea 
                 for long content, an input box for a single character and an 
@@ -152,24 +167,52 @@
                 input or output element for unsuccessful searches.
             </p>
             <br>
-            <li><a class = "p" href = "hw6part3.html">Part 3</a></li>
-            <p class = "task">
-                Create a webpage with a user-defined heading, an input box for 
-                typing a phone number, three read-only input boxes for displaying 
-                results (area code, first 3 digits, lasta 4 digits), buttons to
-                start the process and clear the form, an error message element, 
-                and a hyperlink to return to the main page of Homework 6. Write a 
-                scrit using String methods or regrex to extract and display the 
-                area code, first 3 digits, and last 4 digits of the phone number. 
-                Display error messages for incorrect formats, and clear the error 
-                message and result boxes when the correct format is used.
-            </p>
         </ul>
     </ul>
+
+    <script>
+        function searchCharacter() {
+            // Get user input
+            var content = document.getElementById('content').value.trim();
+            var searchChar = document.getElementById('searchChar').value.trim().toLowerCase();
+
+            // Check for empty textarea or character input
+            if (content === '' || searchChar === '') {
+                alert('Please enter content and search character.');
+                return;
+            }
+
+            // Case-insensitive search
+            var regex = new RegExp(searchChar, 'gi');
+            var matches = content.match(regex);
+
+            if (matches && matches.length > 0) {
+                // Display the count of occurrences
+                var result = 'The character "' + searchChar + '" was found ' + matches.length + ' times.';
+                document.getElementById('output').textContent = result;
+            } else {
+                // Open a new window with an error message
+                var errorMessage = 'Search character "' + searchChar + '" not found in the content you typed.';
+                var newWindow = window.open('', '_blank', 'width=300, height=100');
+                newWindow.document.write('<p>' + errorMessage + '</p>');
+                newWindow.document.write('<button onclick="window.close()">Close</button>');
+                // Clear the output on the main page
+                document.getElementById('output').textContent = '';
+            }
+        }
+
+        function clearForm() {
+            // Clear form fields
+            document.getElementById('content').value = '';
+            document.getElementById('searchChar').value = '';
+            document.getElementById('output').textContent = '';
+        }
+    </script>
+
     <a class = "part3" href = "hw6part3.html">Part 3</a>
-    <a class = "part2" href = "hw6part2.html">Part 2</a>
+    <a class = "part2">Part 2</a>
     <a class = "part1" href = "hw6part1.html">Part 1</a>
-    <a class = "back-link" href = "https://ArkXXIV.github.io/hw1.html">Back Page</i></a>
+    <a class = "back-link" href = "hw6.html">Back to main page</a>
     
 </body>
 </html>

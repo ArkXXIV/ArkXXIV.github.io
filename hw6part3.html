@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="CIS 114 Assignments - Homework 5">
+    <title>Part 3</title>
+    <style>
+        body {
+            background-color: #D8BFD8;
+            font-family: Arial, sans-serif;
+        }
+        header {
+            background-color: #333;
+            color: white;
+            text-align: center;
+            padding: 20px;
+        }
+        h1 {
+            font-size: 24px;
+        }
+        .back-link{
+            font-size: 13px;
+            display: inline-block;
+            background-color: #696969;
+            color: white;
+            text-decoration: none;
+            padding: 9.8px 19px 11px 13px;
+            position: absolute;
+            top: 107.10px;
+            border-radius: 0px 15px 0px 0px;
+            border-style: solid solid solid solid;
+            border-width: 1px;
+            border-color: black;
+        }
+        .back-link:hover{
+            background-color: #A9A9A9;
+        }
+        .navigation {
+            display: inline-block;
+            color: black;
+            text-decoration: none;
+            padding: 4.5px 40px;
+        }
+        h3 {
+            background-color: white;
+            text-align: center;
+            margin: 0px;
+            padding: 1px +0px;
+            text-decoration: none;
+            font-size: 14px;
+            border-style: solid;
+            border-width: 1px;
+        }
+        p {
+            margin: 10px 20px;
+        }
+        .p {
+            color: black;
+            text-decoration: none;
+        }
+        .task {
+            margin: 0px 30% 0px 0px;
+        }
+        .part1 {
+            display: inline-block;
+            background-color: white;
+            color: black;
+            text-decoration: none;
+            padding: 9px 20px 10px 50px;
+            font-weight: bold;
+            font-size: 14px;
+            position: absolute;
+            top: 107px;
+            left: 120px;
+            border-radius: 0px 15px 0px 0px;
+            border-style: solid;
+            border-width: 1px;
+        }
+        .part2 {
+            display: inline-block;
+            background-color: white;
+            color: black;
+            text-decoration: none;
+            padding: 9px 20px 10px 50px;
+            font-weight: bold;
+            font-size: 14px;
+            position: absolute;
+            top: 107px;
+            left: 194px;
+            border-radius: 15px 15px 0px 0px;
+            border-style: solid ;
+            border-width: 1px;
+        }
+        .part3 {
+            display: inline-block;
+            background-color: #D8BFD8;
+            color: black;
+            text-decoration: none;
+            padding: 9px 20px 10px 50px;
+            font-weight: bold;
+            font-size: 14px;
+            position: absolute;
+            top: 107.10px;
+            left: 267px;
+            border-radius: 15px 15px 0px 0px;
+            border-style: solid solid hidden solid;
+            border-width: 1px;
+        }
+        .part1:hover, .part2:hover, .part3:hover {
+            background-color: #D8BFD8;
+        }
+        form {
+            margin-bottom: 20px;
+        }
+        #error {
+            color: red;
+            margin-top: 10px;
+        }
+        table {
+            width: 490px;
+            height: 300px;
+            text-align: left;
+            margin: 20px 50px;
+            background-color: transparent;
+            padding: 10px 20px;
+            border-style: dotted;
+            border-color: #696969;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Homework 6 - Objects</h1>
+    </header>
+    <h3>
+        <p class = "navigation"></p>
+    </h3>
+    <a class = "back-link" href = "https://ArkXXIV.github.io/hw1.html">Back Page</a>
+    <br>
+    <p>Welcome to Homework 6 PART 3!</p>
+    <br>
+    <table>
+        <tr>
+            <td colspan = "2"><h1>Phone Number Processor</h1></td>
+        </tr>
+        <form>
+        <tr>
+            <td><label for="phoneNumber">Enter Phone Number:</label></td>
+            <td><input type="text" id="phoneNumber" maxlength="14" placeholder="(999) 999-9999"></td>
+        </tr>
+        <tr>
+            <td></td>
+            <td>
+                <button type="button" onclick="processPhoneNumber()">Process</button>
+                <button type="button" onclick="clearForm()">Clear</button>
+            </td>
+        </tr>
+        </form>
+        <tr>
+            <td><label for="areaCode">Area Code:</label></td>
+            <td><input type="text" id="areaCode" readonly style = "width: 100%;"></td>
+        </tr>
+        <tr>
+            <td><label for="firstThreeDigits">First 3 Digits:</label></td>
+            <td><input type="text" id="firstThreeDigits" readonly style = "width: 100%;"></td>
+        </tr>
+        <tr>
+            <td><label for="lastFourDigits">Last 4 Digits:</label></td>
+            <td><input type="text" id="lastFourDigits" readonly style = "width: 100%;"></td>
+        </tr>
+        <tr height = 50px>
+            <td colspan = '2'><div id="error"></div></td>
+        </tr>   
+    </table>
+
+    <ul>
+        <h4>For Part 3: </h4>
+        <ul>
+            <p class = "task">
+                Create a webpage with a user-defined heading, an input box for 
+                typing a phone number, three read-only input boxes for displaying 
+                results (area code, first 3 digits, lasta 4 digits), buttons to
+                start the process and clear the form, an error message element, 
+                and a hyperlink to return to the main page of Homework 6. Write a 
+                scrit using String methods or regrex to extract and display the 
+                area code, first 3 digits, and last 4 digits of the phone number. 
+                Display error messages for incorrect formats, and clear the error 
+                message and result boxes when the correct format is used.
+            </p>
+            <br>
+        </ul>
+    </ul>
+
+    <script>
+        function processPhoneNumber() {
+            // Get user input
+            var phoneNumber = document.getElementById('phoneNumber').value.trim();
+
+            // Define regular expression for valid phone number format
+            var regex = /^\(\d{3}\) \d{3}-\d{4}$/;
+
+            // Check if the phone number matches the expected format
+            if (regex.test(phoneNumber)) {
+                // Extract components using regex match groups
+                var match = phoneNumber.match(/\((\d{3})\) (\d{3})-(\d{4})/);
+                var areaCode = match[1];
+                var firstThreeDigits = match[2];
+                var lastFourDigits = match[3];
+
+                // Display results in read-only input boxes
+                document.getElementById('areaCode').value = areaCode;
+                document.getElementById('firstThreeDigits').value = firstThreeDigits;
+                document.getElementById('lastFourDigits').value = lastFourDigits;
+
+                // Clear error message
+                document.getElementById('error').textContent = '';
+            } else {
+                // Display error message for invalid phone number format
+                document.getElementById('error').textContent = 'Please enter the phone number in the format (999) 999-9999.';
+                // Clear results in read-only input boxes
+                document.getElementById('areaCode').value = '';
+                document.getElementById('firstThreeDigits').value = '';
+                document.getElementById('lastFourDigits').value = '';
+            }
+        }
+
+        function clearForm() {
+            // Clear form fields
+            document.getElementById('phoneNumber').value = '';
+            document.getElementById('areaCode').value = '';
+            document.getElementById('firstThreeDigits').value = '';
+            document.getElementById('lastFourDigits').value = '';
+            document.getElementById('error').textContent = '';
+        }
+    </script>
+
+    <a class = "part3">Part 3</a>
+    <a class = "part2" href = "hw6part2.html">Part 2</a>
+    <a class = "part1" href = "hw6part1.html">Part 1</a>
+    <a class = "back-link" href = "hw6.html">Back to main page</a>
+    
+</body>
+</html>

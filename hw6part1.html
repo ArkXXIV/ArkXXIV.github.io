@@ -2,8 +2,9 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="CIS 114 Assignments - Homework 6">
-    <title>Homework 6</title>
+    <title>Part 1</title>
     <style>
         body {
             background-color: #D8BFD8;
@@ -18,13 +19,13 @@
         h1 {
             font-size: 24px;
         }
-        .back-link {
+        .back-link{
             font-size: 13px;
             display: inline-block;
             background-color: #696969;
             color: white;
             text-decoration: none;
-            padding: 10px 38.5px 10px 38.5px;
+            padding: 9.8px 19px 11px 13px;
             position: absolute;
             top: 107.10px;
             border-radius: 0px 15px 0px 0px;
@@ -32,7 +33,7 @@
             border-width: 1px;
             border-color: black;
         }
-        .back-link:hover {
+        .back-link:hover{
             background-color: #A9A9A9;
         }
         .navigation {
@@ -63,17 +64,17 @@
         }
         .part1 {
             display: inline-block;
-            background-color: white;
+            background-color: #D8BFD8;
             color: black;
             text-decoration: none;
-            padding: 9px 20px 9px 50px;
+            padding: 9px 20px 10px 50px;
             font-weight: bold;
             font-size: 14px;
             position: absolute;
-            top: 108px;
-            left: 121px;
+            top: 107.10px;
+            left: 120px;
             border-radius: 0px 15px 0px 0px;
-            border-style: hidden;
+            border-style: solid solid hidden solid;
             border-width: 1px;
         }
         .part2 {
@@ -105,6 +106,24 @@
         .part1:hover, .part2:hover, .part3:hover {
             background-color: #D8BFD8;
         }
+        .form {
+            width: 350px;
+            height: 270px;
+            margin: 20px 50px;
+            background-color: #696969;
+            padding: 20px 20px;
+            color: white;
+            border-style: dotted;
+            border-color: black;
+        }
+        .result {
+            width: 330px;
+            height: 170px;
+            background-color: white;
+            color: #696969;
+            border-radius: 15px;
+            padding: 10px;
+        }
     </style>
 </head>
 <body>
@@ -116,12 +135,24 @@
     </h3>
     <a class = "back-link" href = "https://ArkXXIV.github.io/hw1.html">Back Page</i></a>
     <br>
-    <p>Welcome to Homework 6!</p>
+    <p>Welcome to Homework 6 PART 1!</p>
     <br>
+
+    <div class = "form">
+        <form id="numberForm">
+            <label for="decimalNumber">Enter a number with 4 decimals:</label>
+            <input type="text" id="decimalNumber" required pattern="\d+(\.\d{4})?" required placeholder="Enter here">
+            <br>
+            <button type="button" onclick="calculateResults()">Submit</button>
+            <button type="button" onclick="clearForm()">Clear</button>
+        </form>
+        <br>
+        <div class = "result" id="outputResult"></div>
+    </div>
+
     <ul>
-        <h4>This assignment will have 3 parts: </h4>
+        <h4>For Part 1: </h4>
         <ul>
-            <li><a class = "p" href = "hw6part1.html">Part 1</a></li>
             <p class = "task">
                 You need to create a web page with a form containing an input 
                 box for the user to enter a number with at least 4 decimal
@@ -138,38 +169,45 @@
                 result.
             </p>
             <br>
-            <li><a class = "p" href = "hw6part2.html">Part 2</a></li>
-            <p class = "task">
-                Create a web page with a heading, a form including a textarea 
-                for long content, an input box for a single character and an 
-                element (textarea or div) for output. Include a hyperlink to 
-                return to the main page of Homework 6. Write a script to count
-                the occurences of the single character in the long content. If 
-                found, display the count in the output area. If not found, open 
-                a new window with a message stating the search character wasn't 
-                found. Ensure the new window is 300x100 pixels, does not obscure 
-                mamin content, and includes a button to close it. Clear the 
-                input or output element for unsuccessful searches.
-            </p>
-            <br>
-            <li><a class = "p" href = "hw6part3.html">Part 3</a></li>
-            <p class = "task">
-                Create a webpage with a user-defined heading, an input box for 
-                typing a phone number, three read-only input boxes for displaying 
-                results (area code, first 3 digits, lasta 4 digits), buttons to
-                start the process and clear the form, an error message element, 
-                and a hyperlink to return to the main page of Homework 6. Write a 
-                scrit using String methods or regrex to extract and display the 
-                area code, first 3 digits, and last 4 digits of the phone number. 
-                Display error messages for incorrect formats, and clear the error 
-                message and result boxes when the correct format is used.
-            </p>
         </ul>
     </ul>
+
+    <script>
+        function calculateResults() {
+            var inputNumber = document.getElementById("decimalNumber").value;
+
+            if (!/^\d+(\.\d{4})?$/.test(inputNumber)) {
+                document.getElementById("outputResult").innerText = "You need to type a number with at least 4 decimals, please try again.";
+                return;
+            }
+
+            var parsedNumber = parseFloat(inputNumber);
+
+            var roundedInteger = Math.round(parsedNumber);
+            var sqrtRoundedInteger = Math.round(Math.sqrt(parsedNumber));
+            var roundedTenths = parsedNumber.toFixed(1);
+            var roundedHundredths = parsedNumber.toFixed(2);
+            var roundedThousandths = parsedNumber.toFixed(3);
+
+            document.getElementById("outputResult").innerText =
+                "You typed number " + inputNumber + "\n" +
+                "Rounded to the nearest integer = " + roundedInteger + "\n" +
+                "Square root rounded to integer = " + sqrtRoundedInteger + "\n" +
+                "Rounded to the nearest 10th position = " + roundedTenths + "\n" +
+                "Rounded to the nearest 100th position = " + roundedHundredths + "\n" +
+                "Rounded to the nearest 1000th position = " + roundedThousandths;
+        }
+
+        function clearForm() {
+            document.getElementById("numberForm").reset();
+            document.getElementById("outputResult").innerText = "";
+        }
+    </script>
+
     <a class = "part3" href = "hw6part3.html">Part 3</a>
     <a class = "part2" href = "hw6part2.html">Part 2</a>
-    <a class = "part1" href = "hw6part1.html">Part 1</a>
-    <a class = "back-link" href = "https://ArkXXIV.github.io/hw1.html">Back Page</i></a>
+    <a class = "part1">Part 1</a>
+    <a class = "back-link" href = "hw6.html">Back to main page</i></a>
     
 </body>
 </html>
