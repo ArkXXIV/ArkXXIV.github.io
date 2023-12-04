@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="CIS 114 Assignments - Homework 7">
+    <title>Part 2</title>
+    <style>
+        body {
+            background-color: #D8BFD8;
+            font-family: Arial, sans-serif;
+        }
+        header {
+            background-color: #333;
+            color: white;
+            text-align: center;
+            padding: 20px;
+        }
+        h1 {
+            font-size: 24px;
+        }
+        .back-link{
+            font-size: 13px;
+            display: inline-block;
+            background-color: #696969;
+            color: white;
+            text-decoration: none;
+            padding: 9.8px 19px 11px 13px;
+            position: absolute;
+            top: 107.10px;
+            border-radius: 0px 15px 0px 0px;
+            border-style: solid solid solid solid;
+            border-width: 1px;
+            border-color: black;
+        }
+        .back-link:hover{
+            background-color: #A9A9A9;
+        }
+        .navigation {
+            display: inline-block;
+            color: black;
+            text-decoration: none;
+            padding: 4.5px 40px;
+        }
+        h3 {
+            background-color: white;
+            text-align: center;
+            margin: 0px;
+            padding: 1px +0px;
+            text-decoration: none;
+            font-size: 14px;
+            border-style: solid;
+            border-width: 1px;
+        }
+        p {
+            margin: 10px 20px;
+        }
+        .p {
+            color: black;
+            text-decoration: none;
+        }
+        .task {
+            margin: 0px 30% 0px 0px;
+        }
+        .part1 {
+            display: inline-block;
+            background-color: white;
+            color: black;
+            text-decoration: none;
+            padding: 9px 20px 10px 50px;
+            font-weight: bold;
+            font-size: 14px;
+            position: absolute;
+            top: 107px;
+            left: 120px;
+            border-radius: 0px 15px 0px 0px;
+            border-style: solid;
+            border-width: 1px;
+        }
+        .part2 {
+            display: inline-block;
+            background-color: #D8BFD8;
+            color: black;
+            text-decoration: none;
+            padding: 9px 20px 10px 50px;
+            font-weight: bold;
+            font-size: 14px;
+            position: absolute;
+            top: 107.10px;
+            left: 194px;
+            border-radius: 15px 15px 0px 0px;
+            border-style: solid solid hidden solid;
+            border-width: 1px;
+        }
+        .part1:hover, .part2:hover {
+            background-color: #D8BFD8;
+        }
+        #inputForm {
+            display: none;
+        }
+    </style>
+    </style>
+</head>
+<body onload = "onPageLoad()">
+    <header>
+        <h1>Homework 7 - Object Model and Cookies</h1>
+    </header>
+    <h3>
+        <p class = "navigation"></p>
+    </h3>
+    <a class = "back-link" href = "https://ArkXXIV.github.io/hw1.html">Back Page</a>
+    <br>
+    <p>Welcome to Homework 7 PART 2!</p>
+
+    <br>
+
+    <h1>Cookie Example</h1>
+    <p>This part sets and retrieves cookies for the user's name and username.</p>
+    
+    <div id="inputForm">
+        <label for="nameInput">Name:</label>
+        <input type="text" id="nameInput" placeholder="Enter your name">
+        
+        <label for="usernameInput">Username:</label>
+        <input type="text" id="usernameInput" placeholder="Enter your username">
+        
+        <button onclick="setCookies()">Set Cookies</button>
+    </div>
+
+    <div id="welcomeMessage"></div>
+
+    <br>
+
+    <ul>
+        <h4>For Part 2: </h4>
+        <ul>
+            <p class = "task">
+                Create a web page with a heading, a form including a textarea 
+                for long content, an input box for a single character and an 
+                element (textarea or div) for output. Include a hyperlink to 
+                return to the main page of Homework 6. Write a script to count
+                the occurences of the single character in the long content. If 
+                found, display the count in the output area. If not found, open 
+                a new window with a message stating the search character wasn't 
+                found. Ensure the new window is 300x100 pixels, does not obscure 
+                mamin content, and includes a button to close it. Clear the 
+                input or output element for unsuccessful searches.
+            </p>
+            <br>
+        </ul>
+    </ul>
+    
+    <script>
+        function setCookies() {
+            const userName = document.getElementById('nameInput').value;
+            const userUsername = document.getElementById('usernameInput').value;
+
+            // Set cookies with user input
+            document.cookie = `name=${userName}; path=/`;
+            document.cookie = `username=${userUsername}; path=/`;
+
+            // Update content to welcome the user
+            displayWelcomeMessage();
+        }
+
+        function getCookie(name) {
+            const cookies = document.cookie.split('; ');
+            for (const cookie of cookies) {
+                const [cookieName, cookieValue] = cookie.split('=');
+                if (cookieName === name) {
+                    return cookieValue;
+                }
+            }
+            return null;
+        }
+
+        function areCookiesSet() {
+            return getCookie('name') !== null && getCookie('username') !== null;
+        }
+
+        function displayWelcomeMessage() {
+            const name = getCookie('name');
+            const welcomeMessage = document.getElementById('welcomeMessage');
+            welcomeMessage.textContent = `Welcome back, ${name}!`;
+        }
+
+        function onPageLoad() {
+            if (areCookiesSet()) {
+                // Cookies are set, display welcome message
+                displayWelcomeMessage();
+            } else {
+                // Cookies are not set, show the input form
+                document.getElementById('inputForm').style.display = 'block';
+            }
+        }
+    </script>
+
+    <a class = "part2">Part 2</a>
+    <a class = "part1" href = "hw7part1.html">Part 1</a>
+    <a class = "back-link" href = "hw7.html">Back to main page</a>
+    
+</body>
+</html>

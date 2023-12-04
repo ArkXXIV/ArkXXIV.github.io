@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="CIS 114 Assignments - Homework 7">
+    <title>Part 1</title>
+    <style>
+        body {
+            background-color: #D8BFD8;
+            font-family: Arial, sans-serif;
+        }
+        header {
+            background-color: #333;
+            color: white;
+            text-align: center;
+            padding: 20px;
+        }
+        h1 {
+            font-size: 24px;
+        }
+        .back-link{
+            font-size: 13px;
+            display: inline-block;
+            background-color: #696969;
+            color: white;
+            text-decoration: none;
+            padding: 9.8px 19px 11px 13px;
+            position: absolute;
+            top: 107.10px;
+            border-radius: 0px 15px 0px 0px;
+            border-style: solid solid solid solid;
+            border-width: 1px;
+            border-color: black;
+        }
+        .back-link:hover{
+            background-color: #A9A9A9;
+        }
+        .navigation {
+            display: inline-block;
+            color: black;
+            text-decoration: none;
+            padding: 4.5px 40px;
+        }
+        h3 {
+            background-color: white;
+            text-align: center;
+            margin: 0px;
+            padding: 1px +0px;
+            text-decoration: none;
+            font-size: 14px;
+            border-style: solid;
+            border-width: 1px;
+        }
+        p {
+            margin: 10px 20px;
+        }
+        .p {
+            color: black;
+            text-decoration: none;
+        }
+        .task {
+            margin: 0px 30% 0px 0px;
+        }
+        .part1 {
+            display: inline-block;
+            background-color: #D8BFD8;
+            color: black;
+            text-decoration: none;
+            padding: 9px 20px 10px 50px;
+            font-weight: bold;
+            font-size: 14px;
+            position: absolute;
+            top: 107.10px;
+            left: 120px;
+            border-radius: 0px 15px 0px 0px;
+            border-style: solid solid hidden solid;
+            border-width: 1px;
+        }
+        .part2 {
+            display: inline-block;
+            background-color: white;
+            color: black;
+            text-decoration: none;
+            padding: 9px 20px 9px 50px;
+            font-weight: bold;
+            font-size: 14px;
+            position: absolute;
+            top: 108px;
+            left: 194px;
+            border-radius: 15px 15px 0px 0px;
+        }
+        .part1:hover, .part2:hover{
+            background-color: #D8BFD8;
+        }
+        #styledArea {
+            padding: 20px;
+            border: 1px solid #000;
+            margin: 20px 0;
+            width: 500px;
+            text-align: center;
+            background-color: white;
+            color: black;
+        }
+        .function {
+            width: 540px;
+            margin: 20px 50px;
+            padding: 20px 20px;
+            background-color: #696969;
+            color: white;
+            border-style: dotted;
+            border-color: black;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Homework 7 - Object Model and Cookies</h1>
+    </header>
+    <h3>
+        <p class = "navigation"></p>
+    </h3>
+    <a class = "back-link" href = "https://ArkXXIV.github.io/hw1.html">Back Page</i></a>
+    <br>
+    <p>Welcome to Homework 7 PART 1!</p>
+    <br>
+
+    <div class = "function">
+        <h1>Style Customizer</h1>
+        <div id="styledArea">
+            <p>
+                At evening when I go to bed <br>
+                I see the stars shine overhead; <br>
+                They are the little daisies white <br>
+                That dot the meadow of the Night. <br>
+            </p>
+            <p>
+                And often while I'm dreaming so, <br>
+                Across the sky the Moon will go; <br>
+                It is a lady, sweet and fair, <br>
+                Who comes to gather daisies there. <br>
+            </p>
+            <p>
+                For, when at morning I arise, <br>
+                There's not a star left in the skies; <br>
+                She's picked them all and dropped them down <br>
+                Into the meadows of the town. <br>
+            </p>
+        </div>
+    
+        <form id="styleForm">
+    
+            <label>
+                Background Color:
+                <input type="radio" name="bgColor" value=""> None
+                <input type="radio" name="bgColor" value="lightblue"> Light Blue
+                <input type="radio" name="bgColor" value="salmon"> Soft Red
+            </label>
+        
+            <br>
+        
+            <label>
+                Style:
+                <input type="checkbox" name="style" value="underline"> Underline
+                <input type="checkbox" name="style" value="bold"> Bold
+                <input type="checkbox" name="style" value="italic"> Italic
+            </label>
+        
+            <br>
+        
+            <label>
+                Font Size:
+                <select name="fontSize">
+                    <option value="">Default</option>
+                    <option value="0.8em">Small</option> <!-- Adjusted value for "Small" -->
+                    <option value="1.5em">Medium</option>
+                    <option value="2em">Large</option>
+                </select>
+            </label>
+        </form>
+    </div>
+    
+    <br>
+
+    <ul>
+        <h4>For Part 1: </h4>
+        <ul>
+            <p class = "task">
+                Create a webpage with a heading, content area, and a form
+                allowing users to dynamically choose styles (background color,
+                underline, bold, italic, font size). Use radio buttons,
+                checkboxes and a dropdown list for style selection. Apply 
+                styles instantly without clear or submite buttons. Include a 
+                hyperlink for navigation. Write a script to apply and remove
+                selected styles in real-time, handling checkbox unchecking
+                and ensuring cumulative style application. Note the 
+                appropriatness of using radion buttons for font size selection
+                due to their mutually exclusive nature.
+            </p>
+            <br>
+        </ul>
+    </ul>
+
+    <script>
+        const styledArea = document.getElementById('styledArea');
+        const styleForm = document.getElementById('styleForm');
+    
+        styleForm.addEventListener('input', function () {
+            // Apply background color
+            const bgColor = document.querySelector('input[name="bgColor"]:checked');
+            styledArea.style.backgroundColor = bgColor ? bgColor.value : '';
+    
+            // Apply styles (underline, bold, italic)
+            const underline = document.querySelector('input[name="style"][value="underline"]');
+            const bold = document.querySelector('input[name="style"][value="bold"]');
+            const italic = document.querySelector('input[name="style"][value="italic"]');
+    
+            styledArea.style.textDecoration = underline && underline.checked ? 'underline' : 'none';
+            styledArea.style.fontWeight = bold && bold.checked ? 'bold' : 'normal';
+            styledArea.style.fontStyle = italic && italic.checked ? 'italic' : 'normal';
+    
+            // Apply font size
+            const fontSize = document.querySelector('select[name="fontSize"]');
+            styledArea.style.fontSize = fontSize ? fontSize.value : '';
+        });
+    </script>
+
+    <a class = "part2" href = "hw7part2.html">Part 2</a>
+    <a class = "part1">Part 1</a>
+    <a class = "back-link" href = "hw7.html">Back to main page</i></a>
+    
+</body>
+</html>
