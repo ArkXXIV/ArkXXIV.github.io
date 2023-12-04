@@ -1,10 +1,87 @@
 <!DOCTYPE html>
-<html>
-    <head>
-        <title>Page Title</title>
-    </head>
-    <body>
-        <h1>This is a Heading</h1>
-        <p>This is a paragraph</p>
-    </body>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cookies Example</title>
+    <script>
+        function setCookies() {
+            const userName = document.getElementById('nameInput').value;
+            const userUsername = document.getElementById('usernameInput').value;
+
+            // Set cookies with user input
+            document.cookie = `name=${userName}; path=/`;
+            document.cookie = `username=${userUsername}; path=/`;
+
+            // Update content to greet the user
+            displayGreeting();
+        }
+
+        function getCookie(name) {
+            const cookies = document.cookie.split('; ');
+            for (const cookie of cookies) {
+                const [cookieName, cookieValue] = cookie.split('=');
+                if (cookieName === name) {
+                    return cookieValue;
+                }
+            }
+            return null;
+        }
+
+        function areCookiesSet() {
+            return getCookie('name') !== null && getCookie('username') !== null;
+        }
+
+        function isFirstTime() {
+            return getCookie('firstTime') !== 'false';
+        }
+
+        function setFirstTimeFlag() {
+            document.cookie = 'firstTime=false; path=/';
+        }
+
+        function displayGreeting() {
+            const name = getCookie('name');
+            const welcomeMessage = document.getElementById('welcomeMessage');
+
+            if (isFirstTime()) {
+                welcomeMessage.textContent = `Hi! ${name}`;
+                setFirstTimeFlag(); // Set the flag to indicate the name has been set
+            } else {
+                welcomeMessage.textContent = `Welcome back, ${name}!`;
+            }
+        }
+
+        function onPageLoad() {
+            if (areCookiesSet()) {
+                // Cookies are set, display greeting
+                displayGreeting();
+            } else {
+                // Cookies are not set, show the input form
+                document.getElementById('inputForm').style.display = 'block';
+            }
+        }
+    </script>
+    <style>
+        #inputForm {
+            display: none;
+        }
+    </style>
+</head>
+<body onload="onPageLoad()">
+    <h1>Cookie Example</h1>
+    <p>This page sets and retrieves cookies for the user's name and username.</p>
+    
+    <div id="inputForm">
+        <label for="nameInput">Name:</label>
+        <input type="text" id="nameInput" placeholder="Enter your name">
+        
+        <label for="usernameInput">Username:</label>
+        <input type="text" id="usernameInput" placeholder="Enter your username">
+        
+        <button onclick="setCookies()">Set Cookies</button>
+    </div>
+
+    <div id="welcomeMessage"></div>
+</body>
 </html>
