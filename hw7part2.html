@@ -98,6 +98,16 @@
         #inputForm {
             display: none;
         }
+        .function {
+            height: 200px;
+            width: 540px;
+            margin: 20px 50px;
+            padding: 20px 20px;
+            background-color: #696969;
+            color: white;
+            border-style: dotted;
+            border-color: black;
+        }
     </style>
     </style>
 </head>
@@ -112,25 +122,25 @@
     <br>
     <p>Welcome to Homework 7 PART 2!</p>
 
-    <br>
-
-    <h1>Cookie Example</h1>
-    <p>This part sets and retrieves cookies for the user's name and username.</p>
-    
-    <div id="inputForm">
-        <label for="nameInput">Name:</label>
-        <input type="text" id="nameInput" placeholder="Enter your name">
+    <div class = "function">
+        <h1>Cookie Example</h1>
+        <p>This page sets and retrieves cookies for the user's name and username.</p>
         
-        <label for="usernameInput">Username:</label>
-        <input type="text" id="usernameInput" placeholder="Enter your username">
-        
-        <button onclick="setCookies()">Set Cookies</button>
+        <div id="inputForm">
+            <label for="nameInput">Name:</label>
+            <input type="text" id="nameInput" placeholder="Enter your name">
+            
+            <label for="usernameInput">Username:</label>
+            <input type="text" id="usernameInput" placeholder="Enter your username">
+            
+            <button onclick="setCookies()">Set Cookies</button>
+        </div>
+        <br>
+        <div id="welcomeMessage"></div>
+        <br>
     </div>
 
-    <div id="welcomeMessage"></div>
-
     <br>
-
     <ul>
         <h4>For Part 2: </h4>
         <ul>
@@ -159,8 +169,8 @@
             document.cookie = `name=${userName}; path=/`;
             document.cookie = `username=${userUsername}; path=/`;
 
-            // Update content to welcome the user
-            displayWelcomeMessage();
+            // Update content to greet the user
+            displayGreeting();
         }
 
         function getCookie(name) {
@@ -178,16 +188,30 @@
             return getCookie('name') !== null && getCookie('username') !== null;
         }
 
-        function displayWelcomeMessage() {
+        function isFirstTime() {
+            return getCookie('firstTime') !== 'false';
+        }
+
+        function setFirstTimeFlag() {
+            document.cookie = 'firstTime=false; path=/';
+        }
+
+        function displayGreeting() {
             const name = getCookie('name');
             const welcomeMessage = document.getElementById('welcomeMessage');
-            welcomeMessage.textContent = `Welcome back, ${name}!`;
+
+            if (isFirstTime()) {
+                welcomeMessage.textContent = `Hi! ${name}`;
+                setFirstTimeFlag(); // Set the flag to indicate the name has been set
+            } else {
+                welcomeMessage.textContent = `Welcome back, ${name}!`;
+            }
         }
 
         function onPageLoad() {
             if (areCookiesSet()) {
-                // Cookies are set, display welcome message
-                displayWelcomeMessage();
+                // Cookies are set, display greeting
+                displayGreeting();
             } else {
                 // Cookies are not set, show the input form
                 document.getElementById('inputForm').style.display = 'block';
